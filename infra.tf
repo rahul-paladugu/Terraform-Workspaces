@@ -2,7 +2,7 @@ resource "aws_instance" "roboshop" {
   ami = data.aws_ami.rahul-practice.id
   instance_type = lookup(var.instance_type, terraform.workspace)
   vpc_security_group_ids = [  ]
-  tags = ec2_tags
+  tags = local.ec2_tags
 }
 
 resource "aws_security_group" "allow-network" {
