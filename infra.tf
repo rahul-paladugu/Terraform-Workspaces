@@ -33,7 +33,7 @@ resource "aws_route53_record" "dns-records" {
     name = local.dns_record
     type = "A"
     ttl = 1
-    records = aws_instance.roboshop.private_ip
+    records = [aws_instance.roboshop.private_ip]
     allow_overwrite = true #To delete any existing records
   
 }
