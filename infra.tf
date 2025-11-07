@@ -10,8 +10,8 @@ resource "aws_security_group" "allow-network" {
     dynamic "egress" {
       for_each = toset(var.network_ports)
       content {
-        from_port = egress.values
-        to_port = egress.values
+        from_port = egress.value
+        to_port = egress.value
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
       }
@@ -19,8 +19,8 @@ resource "aws_security_group" "allow-network" {
     dynamic "ingress" {
       for_each = toset(var.network_ports)
       content {
-        from_port = ingress.values
-        to_port = ingress.values
+        from_port = ingress.value
+        to_port = ingress.value
         protocol = "tcp"
         cidr_blocks = ["0.0.0.0/0"]
       }
