@@ -34,6 +34,6 @@ resource "aws_route53_record" "dns-records" {
     type = "A"
     ttl = 1
     records = aws_instance.roboshop.secondary_private_ips
-    allow_overwrite = true
+    allow_overwrite = true #To delete any existing records
   
 }
