@@ -6,7 +6,7 @@ resource "aws_instance" "roboshop" {
 }
 
 resource "aws_security_group" "allow-network" {
-    name = "allow-required-traffic"
+    name = local.sg_name
     dynamic "egress" {
       for_each = toset(var.network_ports)
       content {
