@@ -1,7 +1,7 @@
 resource "aws_instance" "roboshop" {
   ami = data.aws_ami.rahul-practice.id
   instance_type = lookup(var.instance_type, terraform.workspace)
-  vpc_security_group_ids = [  ]
+  vpc_security_group_ids = [aws_security_group.allow-network.id]
   tags = local.ec2_tags
 }
 
@@ -33,7 +33,7 @@ resource "aws_route53_record" "dns-records" {
     name = local.dns_record
     type = "A"
     ttl = 1
-    records = aws_instance.roboshop.secondary_private_ips
+    records = aws_instance.roboshop.private_ip
     allow_overwrite = true #To delete any existing records
   
 }
